@@ -79,6 +79,6 @@ class IoHeavyJob:
 
 
 if __name__ == '__main__':
-    key_path = '/Users/kushhans/Documents/system-413600-04d1ac1ca37d.json'
+    key_path = os.environ['KEY_PATH']
     x = IoHeavyJob(key_path=key_path, user_count=4)
     x.execute()

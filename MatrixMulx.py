@@ -1,5 +1,6 @@
 import random
 import time
+from datetime import datetime
 
 
 def generate_random_number():
@@ -41,7 +42,9 @@ class MatrixMulx:
         self.multiply()
         print(time.time() - start_time)
 
+
 if __name__ == '__main__':
+    print(datetime.now())
     instance = MatrixMulx(800)
     instance.execute()
-
+    print(datetime.now())

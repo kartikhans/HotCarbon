@@ -8,6 +8,7 @@ import uuid
 from datetime import datetime
 from dotenv import load_dotenv
 
+
 card_types = ['VISA', 'MASTERCARD', 'RUPAY']
 status_types = ['ACTIVE', 'INACTIVE']
 transaction_status = ['INPROGRESS', 'COMPLETE']
@@ -79,6 +80,8 @@ class IoHeavyJob:
 
 
 if __name__ == '__main__':
+    print(datetime.now())
     key_path = os.environ['KEY_PATH']
-    x = IoHeavyJob(key_path=key_path, user_count=4)
+    x = IoHeavyJob(key_path=key_path, user_count=40)
     x.execute()
+    print(datetime.now())

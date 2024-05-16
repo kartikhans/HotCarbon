@@ -2,6 +2,7 @@ import time
 import random
 from multiprocessing import Pool
 import heapq
+from datetime import datetime
 
 
 def generate_random_list(size):
@@ -31,12 +32,15 @@ class MapReduceSort:
 
 
 if __name__ == '__main__':
+    print(datetime.now())
     start_time = time.time()
 
-    chunk_size = 100
+    chunk_size = 20
 
     num_processes = 4
 
-    sorted_data = MapReduceSort(data_size=5000000, chunk_size=chunk_size, num_processes=num_processes).map_reducer()
+    sorted_data = MapReduceSort(data_size=9000000, chunk_size=chunk_size, num_processes=num_processes).map_reducer()
 
     print(time.time() - start_time)
+    print(datetime.now())
+

@@ -45,6 +45,6 @@ class MatrixMulx:
 
 if __name__ == '__main__':
     print(datetime.now())
-    instance = MatrixMulx(800)
+    instance = MatrixMulx(500)
     instance.execute()
     print(datetime.now())

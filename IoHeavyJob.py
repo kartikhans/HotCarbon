@@ -49,11 +49,9 @@ class IoHeavyJob:
     def clean_db(self):
         for key in table_id_directory.keys():
             query = f'DELETE FROM {table_id_directory.get(key)} WHERE true;'
-            print(query)
             self.execute_query(query)
 
     def push_data(self, data, table_id):
-        print(data, table_id)
         errors = self.client.insert_rows_json(table_id, data)
 
         return errors
@@ -82,6 +80,6 @@ class IoHeavyJob:
 if __name__ == '__main__':
     print(datetime.now())
     key_path = os.environ['KEY_PATH']
-    x = IoHeavyJob(key_path=key_path, user_count=40)
+    x = IoHeavyJob(key_path=key_path, user_count=100)
     x.execute()
     print(datetime.now())

@@ -52,5 +52,5 @@ class CaptureSystemMetric:
 
 
 if __name__ == '__main__':
-    x = CaptureSystemMetric(time=1)
+    x = CaptureSystemMetric(time=4)
     x.start()

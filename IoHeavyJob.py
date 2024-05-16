@@ -8,7 +8,6 @@ import uuid
 from datetime import datetime
 from dotenv import load_dotenv
 
-
 card_types = ['VISA', 'MASTERCARD', 'RUPAY']
 status_types = ['ACTIVE', 'INACTIVE']
 transaction_status = ['INPROGRESS', 'COMPLETE']

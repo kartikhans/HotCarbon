@@ -31,6 +31,36 @@ def read_metric(start_time, end_time):
             energy += float(line[1].split(" ")[3])
     return dict(avg_utilization=str(utilization / count) + '%', avg_energy=str(energy / count) + 'mW')
 
+# def read_metric(file_name, start_time, end_time):
+#     count, utilization, energy = 0, 0, 0
+#     if start_time or end_time:
+#         start_time = parser.parse(start_time)
+#         end_time = parser.parse(end_time)
+#
+#     f = open(file_name, "r")
+#     lines = f.readlines()
+#
+#     for i in range(0, len(lines), 11):
+#         timestamp = parser.parse(lines[i])
+#         if start_time <= timestamp <= end_time:
+#             temp_energy = 0
+#             for j in range(1, 11):
+#                 line = lines[i + j]
+#                 line_data = line.split(";")[-1].split(" ")
+#                 new_line_data = []
+#                 for d in line_data:
+#                     if d != '' and d != '\n':
+#                         new_line_data.append(d)
+#                 if new_line_data[1] == 'W':
+#                     temp_energy += float(new_line_data[0])*1000
+#                 elif new_line_data[1] == 'µW':
+#                     temp_energy += float(new_line_data[0])/1000
+#                 else:
+#                     temp_energy += float(new_line_data[0])
+#             energy += temp_energy/10
+#     return dict(avg_energy=str(energy) + ' mW', total_energy=str((energy*(end_time - start_time).seconds)/1000) + ' W')
+#
+
 
 class CaptureSystemMetric:
     def __init__(self, time=10000):

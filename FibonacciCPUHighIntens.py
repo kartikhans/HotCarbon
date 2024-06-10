@@ -22,7 +22,6 @@ if __name__ == "__main__":
     num_workers = 8
     print(f"Using {num_workers} workers out of {os.cpu_count()} available cores.")
 
-
     # Create a list of tasks to run in parallel
     tasks = [n] * num_workers
 

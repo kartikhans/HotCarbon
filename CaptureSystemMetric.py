@@ -7,9 +7,10 @@ import subprocess
 import os
 from dotenv import load_dotenv
 
-load_dotenv(dotenv_path='.env')
+load_dotenv(dotenv_path=".env")
 
-filename = os.environ.get('METRIC_FILE')
+filename = os.environ.get("METRIC_FILE")
+
 
 def get_cpu_usage():
     return psutil.cpu_percent(interval=1)
@@ -29,7 +30,11 @@ def read_metric(start_time, end_time):
             count += 1
             utilization += float(line[0][:-1].split(" ")[2])
             energy += float(line[1].split(" ")[3])
-    return dict(avg_utilization=str(utilization / count) + '%', avg_energy=str(energy / count) + 'mW')
+    return dict(
+        avg_utilization=str(utilization / count) + "%",
+        avg_energy=str(energy / count) + "mW",
+    )
+
 
 # def read_metric(file_name, start_time, end_time):
 #     count, utilization, energy = 0, 0, 0
@@ -76,11 +81,17 @@ class CaptureSystemMetric:
             sleep(1)
             energy = subprocess.run(
                 "sudo powermetrics -i 1 -n 1 --samplers cpu_power -a --hide-cpu-duty-cycle | grep 'CPU Power'",
-                shell=True, check=True, capture_output=True)
+                shell=True,
+                check=True,
+                capture_output=True,
+            )
             self.f.write(
-                "CPU Usage: {}%, {}, timestamp - {}\n".format(get_cpu_usage(), str(energy.stdout), datetime.now()))
+                "CPU Usage: {}%, {}, timestamp - {}\n".format(
+                    get_cpu_usage(), str(energy.stdout), datetime.now()
+                )
+            )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     x = CaptureSystemMetric(time=4)
     x.start()

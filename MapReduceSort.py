@@ -23,7 +23,10 @@ class MapReduceSort:
         return list(merged_data)
 
     def map_reducer(self):
-        chunks = [self.data[i: i + self.chunk_size] for i in range(0, len(self.data), self.chunk_size)]
+        chunks = [
+            self.data[i : i + self.chunk_size]
+            for i in range(0, len(self.data), self.chunk_size)
+        ]
 
         with Pool(self.num_processes) as pool:
             sorted_chunks = pool.map(self.mapper, chunks)
@@ -31,7 +34,7 @@ class MapReduceSort:
         return self.reducer(sorted_chunks)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     print(datetime.now())
     start_time = time.time()
 
@@ -39,8 +42,9 @@ if __name__ == '__main__':
 
     num_processes = 4
 
-    sorted_data = MapReduceSort(data_size=9000000, chunk_size=chunk_size, num_processes=num_processes).map_reducer()
+    sorted_data = MapReduceSort(
+        data_size=9000000, chunk_size=chunk_size, num_processes=num_processes
+    ).map_reducer()
 
     print(time.time() - start_time)
     print(datetime.now())
-

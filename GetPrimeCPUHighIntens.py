@@ -3,6 +3,7 @@ import os
 import time
 from datetime import datetime
 
+
 def sieve_of_eratosthenes(n):
     is_prime = [True] * (n + 1)
     p = 2
@@ -12,6 +13,7 @@ def sieve_of_eratosthenes(n):
                 is_prime[i] = False
         p += 1
     return [p for p in range(2, n + 1) if is_prime[p]]
+
 
 if __name__ == "__main__":
     n = 10**8  # Find primes up to this number
@@ -38,4 +40,3 @@ if __name__ == "__main__":
 
     print(f"Time taken: {end_time - start_time} seconds")
     print(f"Number of primes found: {len(results)}")
-

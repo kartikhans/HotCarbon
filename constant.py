@@ -1,1 +1,1 @@
-EMISSIONS = {"M1": 181, "M2": 147, "UNIT": "kg Co2e"}
+EMISSIONS = {"M1": 181, "M2": 147, "i7-4770": 225, "i7-4790": 210, "UNIT": "kg Co2e"}

@@ -1,0 +1,10 @@
+CPU Usage: 6.0%, b'CPU Power: 2148 mW\n', timestamp - 2024-06-26 17:45:51.942846
+CPU Usage: 10.4%, b'CPU Power: 1644 mW\n', timestamp - 2024-06-26 17:45:54.460649
+CPU Usage: 7.6%, b'CPU Power: 2794 mW\n', timestamp - 2024-06-26 17:45:56.987179
+CPU Usage: 11.1%, b'CPU Power: 4951 mW\n', timestamp - 2024-06-26 17:45:59.526016
+CPU Usage: 7.6%, b'CPU Power: 1651 mW\n', timestamp - 2024-06-26 17:46:02.060486
+CPU Usage: 16.2%, b'CPU Power: 8076 mW\n', timestamp - 2024-06-26 17:46:04.571046
+CPU Usage: 15.8%, b'CPU Power: 8357 mW\n', timestamp - 2024-06-26 17:46:07.085057
+CPU Usage: 16.0%, b'CPU Power: 8111 mW\n', timestamp - 2024-06-26 17:46:09.634236
+CPU Usage: 11.4%, b'CPU Power: 2124 mW\n', timestamp - 2024-06-26 17:46:12.184878
+CPU Usage: 7.3%, b'CPU Power: 1756 mW\n', timestamp - 2024-06-26 17:46:14.723900

@@ -3,12 +3,12 @@ from constant import EMISSIONS
 
 class SaveInEmission:
     def __init__(
-        self,
-        embodied_em_new,
-        energy_avg_old,
-        energy_avg_new,
-        expected_age,
-        emission_per_unit,
+            self,
+            embodied_em_new,
+            energy_avg_old,
+            energy_avg_new,
+            expected_age,
+            emission_per_unit,
     ):
         self.emNew = embodied_em_new
         self.avgEnergyOld = energy_avg_old / 1000
@@ -16,16 +16,38 @@ class SaveInEmission:
         self.emissionPerUnit = emission_per_unit / (1000 * 3600 * 1000)
         self.expectedAge = expected_age * 365 * 24 * 60 * 60
 
-    def saved_emission(self, old_time, new_time):
+    def saved_emission(self, old_time, new_time, optimum_carbon=False):
         saved_by_embodied = (self.emNew / self.expectedAge) * new_time
 
-        print(saved_by_embodied)
-        saved_by_energy = (
-            self.avgEnergyNew * new_time - self.avgEnergyOld * old_time
-        ) * self.emissionPerUnit
+        delta_energy = self.avgEnergyNew * new_time - self.avgEnergyOld * old_time
+        saved_by_energy = delta_energy * self.emissionPerUnit
 
-        print(saved_by_embodied / (saved_by_energy + saved_by_embodied))
-        return saved_by_energy + saved_by_embodied
+        if optimum_carbon:
+            if delta_energy > 0:
+                print(
+                    f"Older machine is using lesser energy than newer machine, so higher the CO2 emission higher the "
+                    f"save in emission"
+                )
+            else:
+                print(
+                    f"carbon per unit should be lower than - {saved_by_embodied * (1000 * 3600 * 1000) / (abs(delta_energy))} gCO2 kWh"
+                )
+        return dict(
+            embodied_save=saved_by_embodied,
+            energy_save=saved_by_energy,
+            total_save=saved_by_energy + saved_by_embodied,
+        )
+
+    def saved_emission_percentage(self, old_time, new_time):
+        embodied_emissions = (self.emNew / self.expectedAge) * new_time
+        carbon_actual = (self.avgEnergyNew * new_time * self.emissionPerUnit) + embodied_emissions
+        carbon_old = self.avgEnergyOld * old_time * self.emissionPerUnit
+
+        return dict(
+            embodied_save=(embodied_emissions / carbon_actual) * 100,
+            energy_save=((((self.avgEnergyNew * new_time) - (self.avgEnergyOld * old_time)) * self.emissionPerUnit) / carbon_actual) * 100,
+            total_save=((carbon_actual - carbon_old) / carbon_actual) * 100,
+        )
 
     def old_emission_range(self, new_time):
         saved_by_embodied = self.emNew / (self.expectedAge * self.emissionPerUnit)
